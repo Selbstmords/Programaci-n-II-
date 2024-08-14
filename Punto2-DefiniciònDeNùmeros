@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Punto2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduce el tamaño de nùmeros por ingresar: ");
+        int array = scanner.nextInt();
+
+        int[] numeros = new int[array];
+        
+        System.out.println("Ingresa los números que vas a registrar: ");
+        for (int i = 0; i < array; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            numeros[i] = scanner.nextInt();
+        }
+        
+        int positivos = 0, negativos = 0, ceros = 0;
+        
+        for (int i = 0; i < array; i++) {
+            if (numeros[i] > 0) {
+                positivos++;
+            } else if (numeros[i] < 0) {
+                negativos++;
+            } else {
+                ceros++;
+            }
+        }
+        
+        System.out.println("Números positivos: " + positivos);
+        System.out.println("Números negativos: " + negativos);
+        System.out.println("Cantidad de ceros: " + ceros);
+    }
+}
