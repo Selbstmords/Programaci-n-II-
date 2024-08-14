@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class Punto5 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        final int NùmeroAlumnos = 5;
+        final int NùmeroNotas = 4;
+        
+        double[][] notas = new double[NùmeroAlumnos][NùmeroNotas];
+
+        for (int i = 0; i < NùmeroAlumnos; i++) {
+            System.out.println("Ingresa las notas del estudiante " + (i + 1) + ":");
+            double suma = 0;
+
+            for (int j = 0; j < NùmeroNotas - 1; j++) {
+                System.out.print("Nota " + (j + 1) + ": ");
+                notas[i][j] = scanner.nextDouble();
+                suma += notas[i][j];
+            }
+
+            notas[i][NùmeroNotas - 1] = suma / (NùmeroNotas - 1);
+        }
+
+        System.out.println("\nNotas y promedios de los estudiantes:");
+        for (int i = 0; i < NùmeroAlumnos; i++) {
+            System.out.print("Estudiante " + (i + 1) + ": ");
+            for (int j = 0; j < NùmeroNotas - 1; j++) {
+                System.out.print(notas[i][j] + " ");
+            }
+            System.out.println("| Promedio: " + notas[i][NùmeroNotas - 1]);
+        }
+        
+        scanner.close();
+    }
+}
