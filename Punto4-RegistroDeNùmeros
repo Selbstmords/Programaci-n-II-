@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Punto4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] numeros = new int[10];
+        int suma = 0;
+
+        System.out.println("Ingresa diez números:");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.print("Número " + (i + 1) + ": ");
+            numeros[i] = scanner.nextInt();
+            suma += numeros[i];
+        }
+
+        System.out.print("Ingresa el número que buscas contar: ");
+        int BuscarNùmero = scanner.nextInt();
+
+        int conteo = 0;
+        for (int numero : numeros) {
+            if (numero == BuscarNùmero) {
+                conteo++;
+            }
+        }
+
+        double promedio = (double) suma / numeros.length;
+
+        System.out.println("El número " + BuscarNùmero + " se ingresó " + conteo + " veces.");
+        System.out.println("Promedio de números ingresados: " + promedio);
+
+        scanner.close();
+    }
+}
