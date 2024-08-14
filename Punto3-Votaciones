@@ -1,0 +1,31 @@
+import java.util.Scanner;
+
+public class Punto3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int Nacimiento;
+        int AñoActual = 2024;
+        int MayorìadeEdad = 18;
+        int valorCentinela = 0;
+
+        while (true) {
+            System.out.print("Ingresa el año de nacimiento (o " + valorCentinela + " para terminar): ");
+            Nacimiento = scanner.nextInt();
+
+            if (Nacimiento == valorCentinela) {
+                break;
+            }
+
+            int edad = AñoActual - Nacimiento;
+
+            if (edad >= MayorìadeEdad) {
+                System.out.println("Es una persona apta para votar. Tiene " + edad + " años.");
+            } else {
+                System.out.println("Es una persona NO apta para votar. Tiene " + edad + " años.");
+            }
+        }
+
+        System.out.println("Programa finalizado, ten un buen dìa.");
+        scanner.close();
+    }
+}
