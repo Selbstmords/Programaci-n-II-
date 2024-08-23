@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+public class EvaluacionFinal {
+    private float[] notas;
+    private float mayorNota;
+    private float porcentajeAprobados;
+    private float promedioNotas;
+    private int posicionMenorNota;
+
+    public EvaluacionFinal(float[] notas) {
+        this.notas = notas;
+    }
+
+    public void calcularMayorNota() {
+        mayorNota = notas[0];
+        for (int i = 1; i < notas.length; i++) {
+            if (notas[i] > mayorNota) {
+                mayorNota = notas[i];
+            }
+        }
+    }
+
+    public void calcularPorcentajeAprobados() {
+        int contadorAprobados = 0;
+        for (float nota : notas) {
+            if (nota > 3.0) {
+                contadorAprobados++;
+            }
+        }
+        porcentajeAprobados = ((float) contadorAprobados / notas.length) * 100;
+    }
+
+    public void calcularPromedioNotas() {
+        float suma = 0;
+        for (float nota : notas) {
+            suma += nota;
+        }
+        promedioNotas = suma / notas.length;
+    }
+
+    public void calcularPosicionMenorNota() {
+        float menorNota = notas[0];
+        posicionMenorNota = 0;
+        for (int i = 1; i < notas.length; i++) {
+            if (notas[i] < menorNota) {
+                menorNota = notas[i];
+                posicionMenorNota = i;
+            }
+        }
+    }
+
+    public float getMayorNota() {
+        return mayorNota;
+    }
+
+    public float getPorcentajeAprobados() {
+        return porcentajeAprobados;
+    }
+
+    public float getPromedioNotas() {
+        return promedioNotas;
+    }
+
+    public int getPosicionMenorNota() {
+        return posicionMenorNota;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        float[] notas = new float[15];
+
+        System.out.println("Ingrese las notas de los 15 alumnos:");
+        for (int i = 0; i < notas.length; i++) {
+            System.out.print("Nota del alumno " + (i + 1) + ": ");
+            notas[i] = scanner.nextFloat();
+        }
+
+        EvaluacionFinal evaluacion = new EvaluacionFinal(notas);
+
+        evaluacion.calcularMayorNota();
+        evaluacion.calcularPorcentajeAprobados();
+        evaluacion.calcularPromedioNotas();
+        evaluacion.calcularPosicionMenorNota();
+
+        System.out.println("\nResultados:");
+        System.out.println("Mayor nota: " + evaluacion.getMayorNota());
+        System.out.println("Porcentaje de aprobados: " + evaluacion.getPorcentajeAprobados() + "%");
+        System.out.println("Promedio de notas: " + evaluacion.getPromedioNotas());
+        System.out.println("Posición de la menor nota: " + evaluacion.getPosicionMenorNota());
+    }
+}
