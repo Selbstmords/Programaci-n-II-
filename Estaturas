@@ -1,0 +1,61 @@
+import java.util.Scanner;
+
+public class Estaturas {
+
+    private double[] estaturas; 
+    private double estaturaMayor; 
+    private double estaturaMenor; 
+    
+    public Estaturas() {
+        estaturas = new double[25]; 
+        estaturaMayor = Double.MIN_VALUE; 
+        estaturaMenor = Double.MAX_VALUE; 
+    }
+
+
+    public void ingresarEstaturas() {
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < estaturas.length; i++) {
+            System.out.print("Registra la estatura del estudiante " + (i + 1) + ": ");
+            estaturas[i] = scanner.nextDouble();
+        }
+    }
+
+
+    public void calcularEstaturaMasAlta() {
+        for (double estatura : estaturas) {
+            if (estatura > estaturaMayor) {
+                estaturaMayor = estatura;
+            }
+        }
+    }
+
+
+    public void calcularEstaturaMasBaja() {
+        for (double estatura : estaturas) {
+            if (estatura < estaturaMenor) {
+                estaturaMenor = estatura;
+            }
+        }
+    }
+
+
+    public double getEstaturaMayor() {
+        return estaturaMayor;
+    }
+
+    public double getEstaturaMenor() {
+        return estaturaMenor;
+    }
+
+    public static void main(String[] args) {
+        Estaturas est = new Estaturas();
+        est.ingresarEstaturas();
+
+        est.calcularEstaturaMasAlta();
+        est.calcularEstaturaMasBaja();
+
+        System.out.println("La estatura más alta registrada es: " + est.getEstaturaMayor());
+        System.out.println("La estatura más baja registrada es: " + est.getEstaturaMenor());
+    }
+}
