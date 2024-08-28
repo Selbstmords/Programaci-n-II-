@@ -1,0 +1,72 @@
+package javaapplicationmodulosparcial;
+
+import java.util.Scanner;
+
+public class ModelosParcial {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int[] NumModelos = new int[5];
+
+        System.out.print("Ingresa la cantidad de alumnos: "); //Se lee la cantidad de alumnos que presentaran el parcial
+        int ListadoEstudiantes = scanner.nextInt();
+
+        for (int i = 0; i < ListadoEstudiantes; i++) {
+            System.out.print("Ingresa el documento del alumno " + (i + 1) + ": "); //Se lee el documento ingresado
+            String documento = scanner.next();
+            Estudiante estudiante = new Estudiante(documento);
+            int ultimoDigito = estudiante.obtenerUltimoDigito();
+
+            switch (ultimoDigito) {
+                case 1:
+                case 6:
+                    NumModelos[0]++;
+                    break;
+                case 2:
+                case 7:
+                    NumModelos[1]++;
+                    break;
+                case 3:
+                case 8:
+                    NumModelos[2]++;
+                    break;
+                case 4:
+                case 9:
+                    NumModelos[3]++;
+                    break;
+                case 5:
+                case 0:
+                    NumModelos[4]++;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        System.out.println("Cantidad de alumnos por modelo:"); //Se muestra la cantidad de alumnos que les corresponde cierto modelo
+        for (int i = 0; i < NumModelos.length; i++) {
+            System.out.println("Modelo " + (i + 1) + ": " + NumModelos[i] + " alumnos"); 
+        }
+
+        scanner.close();
+    }
+}
+
+// Clase Estudiante
+class Estudiante {
+    private String documento;
+
+    public Estudiante(String documento) {
+        this.documento = documento;
+    }
+
+    public int obtenerUltimoDigito() {
+        // Verifica que exista un valor valido en el ultimo digito
+        if (documento.isEmpty()) {
+            return -1; // Retorna -1 si el documento no contiene nada
+        }
+        // Obtén el último carácter del documento y conviértelo en un número
+        char ultimoCaracter = documento.charAt(documento.length() - 1);
+        return Character.getNumericValue(ultimoCaracter);
+    }
+}
