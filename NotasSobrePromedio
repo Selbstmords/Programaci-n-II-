@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class NotasSobrePromedio {
+
+    public static void main(String[] args) {
+          Scanner teclado = new Scanner(System.in);
+
+        System.out.print("Ingrese el número de estudiantes: ");
+        int NumNotas = teclado.nextInt();
+
+        double[] Notas = new double[NumNotas];
+
+        for (int i = 0; i < NumNotas; i++) {
+            while (true) {
+                System.out.print("Ingresa la nota del alumno " + (i + 1) + ": ");
+                double nota = teclado.nextDouble();
+                if (nota >= 0 && nota <= 5) {
+                    Notas[i] = nota;
+                    break;
+                } else {
+                    System.out.println("La nota debe estar entre 0 y 5. Intenta de nuevo.");
+                }
+            }
+        }
+
+        double suma = 0;
+        for (double nota : Notas) {
+            suma += nota;
+        }
+        double PromedioNotas = suma / NumNotas;
+
+        int NotaMayorPromedio = 0;
+        int NotaMenorPromedio = 0;
+        for (double nota : Notas) {
+            if (nota > PromedioNotas) {
+                NotaMayorPromedio++;
+            } else if (nota < PromedioNotas) {
+                NotaMenorPromedio++;
+            }
+        }
+
+        System.out.printf("\nPromedio de las notas: %.2f\n", PromedioNotas);
+        System.out.println("Cantidad de notas arriba del promedio: " + NotaMayorPromedio);
+        System.out.println("Cantidad de notas abajo del promedio: " + NotaMenorPromedio);
+       
+    }    
+}
