@@ -5,12 +5,13 @@ public class NotasSobrePromedio {
     public static void main(String[] args) {
           Scanner teclado = new Scanner(System.in);
 
-        System.out.print("Ingrese el número de estudiantes: ");
+        System.out.print("Ingrese el número de estudiantes: "); //Se lee la cantidad de alumnos
         int NumNotas = teclado.nextInt();
 
-        double[] Notas = new double[NumNotas];
+        double[] Notas = new double[NumNotas]; //Arreglo para almacenar notas
 
-        for (int i = 0; i < NumNotas; i++) {
+        //Leer notas del alumno
+        for (int i = 0; i < NumNotas; i++) { 
             while (true) {
                 System.out.print("Ingresa la nota del alumno " + (i + 1) + ": ");
                 double nota = teclado.nextDouble();
@@ -27,8 +28,9 @@ public class NotasSobrePromedio {
         for (double nota : Notas) {
             suma += nota;
         }
-        double PromedioNotas = suma / NumNotas;
+        double PromedioNotas = suma / NumNotas; //Calcular Promedio
 
+        //Se define que notas estan por encima o debajo del promedio
         int NotaMayorPromedio = 0;
         int NotaMenorPromedio = 0;
         for (double nota : Notas) {
@@ -39,9 +41,9 @@ public class NotasSobrePromedio {
             }
         }
 
-        System.out.printf("\nPromedio de las notas: %.2f\n", PromedioNotas);
-        System.out.println("Cantidad de notas arriba del promedio: " + NotaMayorPromedio);
-        System.out.println("Cantidad de notas abajo del promedio: " + NotaMenorPromedio);
+        System.out.printf("\nPromedio de las notas: %.2f\n", PromedioNotas); //Se muestra el promedio 
+        System.out.println("Cantidad de notas arriba del promedio: " + NotaMayorPromedio); //Se muestra cuantas notas estan encima del promedio
+        System.out.println("Cantidad de notas abajo del promedio: " + NotaMenorPromedio); //Se muestra cuantas notas estan debajo del promedio
        
     }    
 }
