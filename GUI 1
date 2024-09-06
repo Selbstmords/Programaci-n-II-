@@ -1,0 +1,63 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Interfaz extends JFrame {
+    private JTextField nameField;
+    private JRadioButton maleButton;
+    private JRadioButton femaleButton;
+    private JButton submitButton;
+
+    public Interfaz() { //Se establece como estara organizada la interfaz
+        setTitle("Formulario de Usuario");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(4, 1));
+
+        //Se establecen los botones dentro del GUI
+        nameField = new JTextField(20);
+        maleButton = new JRadioButton("Hombre");
+        femaleButton = new JRadioButton("Mujer");
+        submitButton = new JButton("Enviar");
+
+        //Se agrupan los botones hombre y mujer
+        ButtonGroup genderGroup = new ButtonGroup();
+        genderGroup.add(maleButton);
+        genderGroup.add(femaleButton); 
+
+        //Se crea un panel para ingresar el nombre
+        JPanel namePanel = new JPanel();
+        namePanel.add(new JLabel("Nombre:"));
+        namePanel.add(nameField);
+
+        //Se genera el panel donde se escoge el genero
+        JPanel genderPanel = new JPanel();
+        genderPanel.add(maleButton);
+        genderPanel.add(femaleButton);
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(submitButton);
+
+        //Se agrega el nombre, genero y boton de ingresar
+        add(namePanel);
+        add(genderPanel);
+        add(buttonPanel);
+
+        //Se muestra en una ventana los datos ingresados
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String name = nameField.getText();
+                String gender = maleButton.isSelected() ? "Hombre" : femaleButton.isSelected() ? "Mujer" : "No seleccionado";
+                JOptionPane.showMessageDialog(null, "Nombre: " + name + "\nGénero: " + gender);
+            }
+        });
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Interfaz();
+    }
+}
